@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Planarity Test</title>
+  
+  <script>
+    // Define the graph as an adjacency matrix, where value is 1 when there is edge between the vertices.
+    const graph = [
+    [0, 1, 1, 1],
+    [1, 0, 1, 1],
+    [1, 1, 0, 1],
+    [1, 1, 1, 0],
+  ];
+
+    // Function to perform the planarity test
+    function isPlanar(graph) {
+      const numVertices = graph.length;// counts the total number of vertices of graph.
+
+      let numEdges=0;
+      for (let vertex = 0; vertex < numVertices; vertex++) {
+        // Count the number of edges for the current vertex
+        
+
+        
+        for (let neighbor = 0; neighbor < numVertices; neighbor++) {
+          if (graph[vertex][neighbor] === 1) {
+            numEdges++;
+          }
+        }
+    }
+
+        // Calculate the maximum number of edges for a planar graph
+        const maxEdges = (3 * numVertices - 6);
+
+        // If the number of edges exceeds the maximum, graph is non-planar
+        if (numEdges > maxEdges) {
+          return false; // Graph is not planar
+        }
+      
+
+      return true; // All vertices satisfied the condition, graph is planar
+    }
+
+    function displayResult()
+    {
+        const result = isPlanar(graph);
+        if(result=='true')
+        {
+            console.log("The graph is planar");
+        }
+        else
+        {
+            console.log("The graph is not planar");
+        }
+    }
+      
+      
+
+     
+  </script>
+  
+</head>
+<body>
+    <h1>Planarity Test</h1>
+    <button onclick="displayResult()">Run Planarity Test</button>
+
+
+</body>
+
+</html>
